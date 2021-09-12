@@ -1,0 +1,26 @@
+{
+  "name": "cuisine_class",
+  "version": "1.0.0",
+  "description": "this is project to show the abillity with node and express  with mvc model",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csant510/Cuisine_Class.git"
+  },
+  "author": "Charles Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csant510/Cuisine_Class/issues"
+  },
+  "homepage": "https://github.com/csant510/Cuisine_Class#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "http-status-codes": "^2.1.4"
+  }
+}
