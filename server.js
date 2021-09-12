@@ -12,9 +12,16 @@ app.use(
 
 app.use(express.json());
 
+//routes
 app.get("/", (req,res) =>{
         res.send("Welcome to Cusine Class!");
 });
+
+app.get("/courses", homeController.showCourses);
+app.get("/contact", homeController.showSignUp);
+app.post("/contact", homeController.postedSignUpForm);
+
+
 
 app.listen(app.get("port"), ()=> {
     console.log(`Sever running at http://localhost:${app.get("port")}`);
