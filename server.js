@@ -1,5 +1,7 @@
 const express = require("express"),
     app = express();
+//controlers
+homeController = require("./controllers/homeController");
 
 app.set("port", process.env.PORT || 3000);
 app.use(
