@@ -2,7 +2,9 @@ const express = require("express"),
     app = express();
 //controlers
 homeController = require("./controllers/homeController");
+layouts = require("express-ejs-layouts");
 
+app.set("view engine", "ejs");
 app.set("port", process.env.PORT || 3000);
 app.use(
     express.urlencoded({
