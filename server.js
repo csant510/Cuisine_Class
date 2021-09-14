@@ -12,7 +12,10 @@ app.use(
     })
 );
 
-app.use(express.json());
+app.use(express.json()); 
+//app.use(layouts);
+app.use(express.static("public"));
+
 
 //routes
 app.get("/", (req,res) =>{
