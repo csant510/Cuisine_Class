@@ -5,6 +5,7 @@ const express = require("express"),
 
   //controllers
   homeController = require("./controllers/homeController"),
+  subscribersController = require("./controllers/subscribersController"),
   errorController = require("./controllers/errorController"),
   layouts = require("express-ejs-layouts");
 
@@ -38,9 +39,15 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+
+app.get("/subscribers", subscribersController.getAllSubscribers);
+app.get("/contact", subscribersController.getSubscriptionPage);
+app.post("/subscribe", subscribersController.saveSubscriber);
+
+
 app.get("/courses", homeController.showCourses);
 app.get("/contact", homeController.showSignUp);
-app.post("/contact", homeController.postedSignUpForm);
+
 
 //error handlig rotues
 app.use(errorController.pageNotFoundError);
