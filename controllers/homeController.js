@@ -1,5 +1,3 @@
-"use strict";
-
 var courses = [
   {
     title: "Event Driven Cakes",

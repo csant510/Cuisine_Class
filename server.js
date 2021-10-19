@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express"),
   app = express(),
   homeController = require("./controllers/homeController"),
@@ -9,7 +7,7 @@ const express = require("express"),
 
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb://localhost:27017/confetti_cuisine",
+  "mongodb://localhost:27017/cuisine_class",
   { useNewUrlParser: true }
 );
 mongoose.set("useCreateIndex", true);

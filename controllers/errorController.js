@@ -1,5 +1,3 @@
-"use strict";
-
 const httpStatus = require("http-status-codes");
 
 exports.pageNotFoundError = (req, res) => {
