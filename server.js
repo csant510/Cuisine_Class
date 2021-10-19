@@ -3,24 +3,27 @@ const express = require("express"),
   homeController = require("./controllers/homeController"),
   errorController = require("./controllers/errorController"),
   subscribersController = require("./controllers/subscribersController"),
+  methodOverrde = require("method-override"),
   layouts = require("express-ejs-layouts");
 
-const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb://localhost:27017/cuisine_class",
-  { useNewUrlParser: true }
-);
-mongoose.set("useCreateIndex", true);
-app.set("view engine", "ejs");
-app.set("port", process.env.PORT || 3000);
-app.use(
-  express.urlencoded({
-    extended: false
-  })
-);
-app.use(express.json());
-app.use(layouts);
-app.use(express.static("public"));
+  const mongoose = require("mongoose");
+  mongoose.connect(
+    "mongodb://localhost:27017/confetti_cuisine",
+    { useNewUrlParser: true }
+  );
+  mongoose.set("useCreateIndex", true);
+  app.set("view engine", "ejs");
+  app.set("port", process.env.PORT || 3000);
+
+  app.use(methodOverrde("_method", {methotds: ["POST","GET"]}));
+  app.use(
+    express.urlencoded({
+      extended: false
+    })
+  );
+  app.use(express.json());
+  app.use(layouts);
+  app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.render("index");
