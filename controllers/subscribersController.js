@@ -1,5 +1,3 @@
-"use strict";
-
 const Subscriber = require("../models/subscriber"),
   getSubscriberParams = body => {
     return {

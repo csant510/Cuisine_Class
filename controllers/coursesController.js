@@ -1,5 +1,3 @@
-"use strict";
-
 const Course = require("../models/course"),
   getCourseParams = body => {
     return {
