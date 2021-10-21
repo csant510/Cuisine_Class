@@ -1,5 +1,7 @@
+"use strict";
+
 const Subscriber = require("../models/subscriber"),
-  getSubscriberParams = (body) => {
+  getSubscriberParams = body => {
     return {
       name: body.name,
       email: body.email,
@@ -36,26 +38,25 @@ module.exports = {
         next();
       })
       .catch(error => {
-        console.log(`Error saving subscriber:${error.message}`);
+        console.log(`Error saving subscriber: ${error.message}`);
         next(error);
       });
   },
 
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
-    if (redirectPath) res.redirect(redirectPath);
+    if (redirectPath !== undefined) res.redirect(redirectPath);
     else next();
   },
   show: (req, res, next) => {
-    var subscriberId = req.params.id;
+    let subscriberId = req.params.id;
     Subscriber.findById(subscriberId)
       .then(subscriber => {
         res.locals.subscriber = subscriber;
         next();
       })
       .catch(error => {
-        console.log(`Error fetching subscriber by ID:
- ${error.message}`)
+        console.log(`Error fetching subscriber by ID: ${error.message}`);
         next(error);
       });
   },
@@ -65,7 +66,7 @@ module.exports = {
   },
 
   edit: (req, res, next) => {
-    var subscriberId = req.params.id;
+    let subscriberId = req.params.id;
     Subscriber.findById(subscriberId)
       .then(subscriber => {
         res.render("subscribers/edit", {
@@ -73,8 +74,7 @@ module.exports = {
         });
       })
       .catch(error => {
-        console.log(`Error fetching subscriber by ID:
- ${error.message}`);
+        console.log(`Error fetching subscriber by ID: ${error.message}`);
         next(error);
       });
   },
@@ -92,8 +92,7 @@ module.exports = {
         next();
       })
       .catch(error => {
-        console.log(`Error updating subscriber by ID:
- ${error.message}`);
+        console.log(`Error updating subscriber by ID: ${error.message}`);
         next(error);
       });
   },
@@ -106,10 +105,8 @@ module.exports = {
         next();
       })
       .catch(error => {
-        console.log(`Error deleting subscriber by ID:
- ${error.message}`);
+        console.log(`Error deleting subscriber by ID: ${error.message}`);
         next();
       });
   }
 };
-
