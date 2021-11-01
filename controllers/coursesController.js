@@ -108,5 +108,6 @@ module.exports = {
         console.log(`Error deleting course by ID: ${error.message}`);
         next();
       });
-  }
+  },  
+  
 };

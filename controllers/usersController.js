@@ -112,5 +112,8 @@ module.exports = {
         console.log(`Error deleting user by ID: ${error.message}`);
         next();
       });
-  }
+  },
+  login: (req, res) => {
+    res.render("users/login");
+  },
 };
