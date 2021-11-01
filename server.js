@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require("express"),
   layouts = require("express-ejs-layouts"),
   app = express(),
@@ -47,7 +45,7 @@ router.get("/users/new", usersController.new);
 router.post("/users/create", usersController.create, usersController.redirectView);
 router.get("/users/login", usersController.login);
 //router.post("/users/login", usersController.authenticate);
-//router.get("/users/logout", usersController.logout,usersController.redirectView );
+router.get("/users/logout", usersController.logout,usersController.redirectView );
 
 router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.update, usersController.redirectView);
