@@ -1,5 +1,3 @@
-"use strict";
-
 const User = require("../models/user"),
   getUserParams = body => {
     return {
