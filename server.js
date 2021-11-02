@@ -32,6 +32,27 @@ router.use(
   })
 );
 
+router.use(express.json());
+
+router.use(cookieParser("secretCuisine123"));
+router.use(
+  expressSession({
+    secret: "secretCuisine123",
+    cookie: {
+      maxAge: 4000000
+    },
+    resave: false,
+    saveUninitialized: false
+  })
+);
+//router.use(connectFlash());
+
+router.use(passport.initialize());
+router.use(passport.session());
+//passport.use(User.createStrategy());
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
+
 router.use(layouts);
 router.use(express.static("public"));
 
