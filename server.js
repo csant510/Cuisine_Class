@@ -12,6 +12,7 @@ const express = require("express"),
   passport = require("passport"),
   cookieParser = require("cookie-parser"),
   expressSession = require("express-session"),
+  connectFlash = require("connect-flash"),
   User = require("./models/user");
 
 mongoose.connect(
@@ -45,13 +46,13 @@ router.use(
     saveUninitialized: false
   })
 );
-//router.use(connectFlash());
+router.use(connectFlash());
 
 router.use(passport.initialize());
 router.use(passport.session());
-//passport.use(User.createStrategy());
-//passport.serializeUser(User.serializeUser());
-//passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 router.use(layouts);
 router.use(express.static("public"));
@@ -67,7 +68,7 @@ router.get("/", homeController.index);
 
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
-router.post("/users/create", usersController.create, usersController.redirectView);
+router.post("/users/create", usersController.validate,usersController.create, usersController.redirectView);
 router.get("/users/login", usersController.login);
 //router.post("/users/login", usersController.authenticate);
 router.get("/users/logout", usersController.logout,usersController.redirectView );
