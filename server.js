@@ -8,7 +8,11 @@ const express = require("express"),
   usersController = require("./controllers/usersController.js"),
   coursesController = require("./controllers/coursesController.js"),
   mongoose = require("mongoose"),
-  methodOverride = require("method-override");
+  methodOverride = require("method-override"),
+  passport = require("passport"),
+  cookieParser = require("cookie-parser"),
+  expressSession = require("express-session"),
+  User = require("./models/user");
 
 mongoose.connect(
   "mongodb://localhost:27017/cuisine_class",
