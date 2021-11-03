@@ -1,4 +1,5 @@
 const User = require("../models/user"),
+passport = require("passport"),
   getUserParams = body => {
     return {
       name: {
@@ -146,8 +147,13 @@ module.exports = {
        next();
      }
    });
-  },  
-
+  }, 
+  authenticate: passport.authenticate("local", {
+    failureRedirect: "/users/login",
+    failureFlash: "Failed to login.",
+    successRedirect: "/",
+    successFlash: "Logged in!"
+  }),
   logout: (req, res, next) => {
     req.logout();
     req.flash("success", "You have been logged out!");

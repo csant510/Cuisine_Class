@@ -65,13 +65,20 @@ router.use(
 );
 router.use(express.json());
 
+
+router.use((req, res, next) => {
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  res.locals.flashMessages = req.flash();
+  next();
+});
 router.get("/", homeController.index);
 
 router.get("/users", usersController.index, usersController.indexView);
 router.get("/users/new", usersController.new);
 router.post("/users/create", usersController.validate,usersController.create, usersController.redirectView);
 router.get("/users/login", usersController.login);
-//router.post("/users/login", usersController.authenticate);
+router.post("/users/login", usersController.authenticate);
 router.get("/users/logout", usersController.logout,usersController.redirectView );
 
 router.get("/users/:id/edit", usersController.edit);
@@ -93,11 +100,7 @@ router.put(
   subscribersController.redirectView
 );
 router.get("/subscribers/:id", subscribersController.show, subscribersController.showView);
-router.delete(
-  "/subscribers/:id/delete",
-  subscribersController.delete,
-  subscribersController.redirectView
-);
+router.delete("/subscribers/:id/delete", subscribersController.delete,subscribersController.redirectView);
 
 router.get("/courses", coursesController.index, coursesController.indexView);
 router.get("/courses/new", coursesController.new);
