@@ -12,6 +12,7 @@ const express = require("express"),
   passport = require("passport"),
   cookieParser = require("cookie-parser"),
   expressSession = require("express-session"),
+  expressValidator = require("express-validator"),
   connectFlash = require("connect-flash"),
   User = require("./models/user");
 
@@ -56,7 +57,7 @@ passport.deserializeUser(User.deserializeUser());
 
 router.use(layouts);
 router.use(express.static("public"));
-
+router.use(expressValidator());
 router.use(
   express.urlencoded({
     extended: false
