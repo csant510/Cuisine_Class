@@ -5,6 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
 	<title>Confetti Cuisine</title>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/cuisineClass.js"></script>
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/cuisine_class.css">
 </head>
@@ -12,7 +15,7 @@
 <body>
 	<div id="nav">
 		<div class="col-sm nav-align">
-			<h1 id="title">Cuisine Class</h1>
+			<h1 id="title">Confetti Cuisine</h1>
 		</div>
 		<div class="col-sm nav-align">
 			<a href="/">
@@ -27,6 +30,7 @@
 			<a href="/users">
 				<span class="button">Users</span>
 			</a>
+			<%- include courses/_coursesModal %>.
 		</div>
 
 		<div class="login">
@@ -60,7 +64,6 @@
 	<div class="container">
 		<%- body %>
 	</div>
-
 </body>
 
 </html>
