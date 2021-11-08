@@ -1,5 +1,7 @@
+"use strict";
+
 const User = require("../models/user"),
-passport = require("passport"),
+  passport = require("passport"),
   getUserParams = body => {
     return {
       name: {
@@ -31,6 +33,7 @@ module.exports = {
   new: (req, res) => {
     res.render("users/new");
   },
+
   create: (req, res, next) => {
     if (req.skip) next();
     let newUser = new User(getUserParams(req.body));
@@ -46,7 +49,6 @@ module.exports = {
       }
     });
   },
-
 
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
@@ -135,19 +137,19 @@ module.exports = {
         max: 5
       })
       .equals(req.body.zipCode);
-   req.check("password", "Password cannot be empty").notEmpty();
-   req.getValidationResult().then((error) => {
-     if (!error.isEmpty()) {
-       let messages = error.array().map(e => e.msg);
-       req.skip = true;
-       req.flash("error", messages.join(" and "));
-       res.locals.redirect = '/users/new';
-       next();
-     } else {
-       next();
-     }
-   });
-  }, 
+    req.check("password", "Password cannot be empty").notEmpty();
+    req.getValidationResult().then(error => {
+      if (!error.isEmpty()) {
+        let messages = error.array().map(e => e.msg);
+        req.skip = true;
+        req.flash("error", messages.join(" and "));
+        res.locals.redirect = "/users/new";
+        next();
+      } else {
+        next();
+      }
+    });
+  },
   authenticate: passport.authenticate("local", {
     failureRedirect: "/users/login",
     failureFlash: "Failed to login.",
