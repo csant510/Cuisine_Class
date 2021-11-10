@@ -228,3 +228,22 @@ button[type=submit] {
   color: #625956;
   border: 1px solid;
 }
+
+#chat {
+  width: 100%;
+  height: 400px;
+  margin-top: 10px;
+  border: 1px solid #635956;
+  overflow: scroll;
+}
+
+#chat li {
+  text-decoration: none;
+  list-style: none;
+  padding: 10px;
+}
+
+.message.current-user {
+  font-weight: bold;
+  color: #3d41b4;
+}
